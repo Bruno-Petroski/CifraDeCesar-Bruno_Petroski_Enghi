@@ -43,26 +43,31 @@
                 let Decodificar = document.getElementById("idDecod").checked
                 let output = document.getElementById("idOut")
                 
-                temp = ""
-                
                 input = input.toUpperCase()
-                for(let i = 0 ; i < input.length; i++){
-                    let valorASCII = input[i].charCodeAt()
-                    let valorASCIICripto = valorASCII + cifra
-                    if( valorASCII > 90 ){
+                temp = ""
 
-                    }
-                    
-                    temp += String.fromCharCode(valorASCIICripto)
-
-                   
-                        
+                if(Codificar){
+                    for(let i = 0 ; i < input.length; i++){
+                        let valorASCII = input[i].charCodeAt()
+                        let valorASCIICripto = valorASCII + cifra
+                        if( valorASCIICripto > 90 ){
+                            valorASCIICripto = (valorASCIICripto%26) + 52
+                        }
+                        temp += String.fromCharCode(valorASCIICripto)   
+                    }  
+                }else{
+                    for(let i = 0 ; i < input.length; i++){
+                        let valorASCII = input[i].charCodeAt()
+                        let valorASCIICripto = valorASCII - cifra
+                        if( valorASCIICripto < 65 ){
+                                valorASCIICripto = (valorASCIICripto+26)
+                                console.log(valorASCIICripto)
+                            }
+                            temp += String.fromCharCode(valorASCIICripto) 
+                        }
                 }
                 
                 output.value = temp
-                
-                
-                
             }
         </script>
 
